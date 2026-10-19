@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Compiled output
+dist/
+
+# User uploaded attachments
+uploads/
+!uploads/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# Test files & coverage (per user requirement)
+__tests__/
+*.test.ts
+*.test.js
+*.spec.ts
+*.spec.js
+coverage/
+
+# OS / Editor
+.DS_Store
+Thumbs.db

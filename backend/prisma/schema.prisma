@@ -1,0 +1,234 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CITIZEN
+  ADMIN
+}
+
+enum RequestStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  IN_PROGRESS
+  AWAITING_CITIZEN
+  ON_HOLD
+  RESOLVED
+  CLOSED
+  REJECTED
+  REOPENED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum RequestType {
+  SERVICE_REQUEST
+  COMMUNITY_ISSUE
+}
+
+model User {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  passwordHash String
+  fullName     String
+  phone        String?
+  nationalId   String?
+  role         Role          @default(CITIZEN)
+  isActive     Boolean       @default(true)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  requests      ServiceRequest[]       @relation("CitizenRequests")
+  statusChanges RequestStatusHistory[] @relation("UserStatusChanges")
+  updates       RequestUpdate[]        @relation("UserUpdates")
+  notifications Notification[]         @relation("UserNotifications")
+  feedback      Feedback[]             @relation("UserFeedback")
+  announcements Announcement[]         @relation("AdminAnnouncements")
+  auditLogs     AuditLog[]             @relation("UserAuditLogs")
+
+  @@index([email])
+  @@index([role])
+}
+
+model ServiceCategory {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  code        String   @unique
+  description String
+  icon        String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  requests ServiceRequest[]
+
+  @@index([code])
+  @@index([isActive])
+}
+
+model ServiceRequest {
+  id               String        @id @default(uuid())
+  referenceNumber  String        @unique
+  title            String
+  description      String
+  requestType      RequestType   @default(SERVICE_REQUEST)
+  status           RequestStatus @default(SUBMITTED)
+  priority         Priority      @default(MEDIUM)
+  categoryId       String
+  citizenId        String
+  locationName     String
+  ward             String?
+  latitude         Float?
+  longitude        Float?
+  rejectionReason  String?
+  onHoldReason     String?
+  resolutionDetails String?
+  resolvedAt       DateTime?
+  closedAt         DateTime?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  category      ServiceCategory        @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  citizen       User                   @relation("CitizenRequests", fields: [citizenId], references: [id], onDelete: Cascade)
+  statusHistory RequestStatusHistory[]
+  updates       RequestUpdate[]
+  attachments   RequestAttachment[]
+  feedback      Feedback?
+  notifications Notification[]
+
+  @@index([referenceNumber])
+  @@index([status])
+  @@index([priority])
+  @@index([categoryId])
+  @@index([citizenId])
+  @@index([createdAt])
+}
+
+model RequestStatusHistory {
+  id          String         @id @default(uuid())
+  requestId   String
+  fromStatus  RequestStatus?
+  toStatus    RequestStatus
+  changedById String
+  reason      String?
+  notes       String?
+  createdAt   DateTime       @default(now())
+
+  request   ServiceRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  changedBy User           @relation("UserStatusChanges", fields: [changedById], references: [id], onDelete: Cascade)
+
+  @@index([requestId])
+  @@index([createdAt])
+}
+
+model RequestUpdate {
+  id         String   @id @default(uuid())
+  requestId  String
+  authorId   String
+  message    String
+  isInternal Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  request ServiceRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  author  User           @relation("UserUpdates", fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@index([requestId])
+  @@index([isInternal])
+  @@index([createdAt])
+}
+
+model RequestAttachment {
+  id           String   @id @default(uuid())
+  requestId    String
+  fileName     String
+  originalName String
+  fileUrl      String
+  fileType     String
+  fileSize     Int
+  uploadedById String
+  createdAt    DateTime @default(now())
+
+  request ServiceRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  @@index([requestId])
+}
+
+model Notification {
+  id               String   @id @default(uuid())
+  userId           String
+  title            String
+  message          String
+  type             String   @default("INFO")
+  relatedRequestId String?
+  isRead           Boolean  @default(false)
+  createdAt        DateTime @default(now())
+
+  user    User            @relation("UserNotifications", fields: [userId], references: [id], onDelete: Cascade)
+  request ServiceRequest? @relation(fields: [relatedRequestId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([isRead])
+  @@index([createdAt])
+}
+
+model Feedback {
+  id        String   @id @default(uuid())
+  requestId String   @unique
+  citizenId String
+  rating    Int
+  comments  String?
+  createdAt DateTime @default(now())
+
+  request ServiceRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  citizen User           @relation("UserFeedback", fields: [citizenId], references: [id], onDelete: Cascade)
+
+  @@index([citizenId])
+  @@index([rating])
+}
+
+model Announcement {
+  id          String    @id @default(uuid())
+  title       String
+  content     String
+  summary     String?
+  priority    Priority  @default(MEDIUM)
+  category    String?
+  isPublished Boolean   @default(false)
+  publishedAt DateTime?
+  authorId    String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  author User @relation("AdminAnnouncements", fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@index([isPublished])
+  @@index([publishedAt])
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String?
+  action     String
+  entityType String
+  entityId   String
+  details    String?
+  ipAddress  String?
+  createdAt  DateTime @default(now())
+
+  user User? @relation("UserAuditLogs", fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([action])
+  @@index([entityType])
+  @@index([createdAt])
+}
