@@ -168,24 +168,6 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       {/* Bottom Actions */}
       <Box sx={{ p: 2, display: 'flex', flexDirection: 'column', gap: 1 }}>
         <Button
-          component={Link}
-          to="/"
-          target="_blank"
-          variant="outlined"
-          size="small"
-          startIcon={<PublicIcon fontSize="small" />}
-          sx={{
-            color: '#94A3B8',
-            borderColor: 'rgba(255,255,255,0.15)',
-            fontSize: '0.78rem',
-            textTransform: 'none',
-            justifyContent: 'flex-start',
-            '&:hover': { borderColor: '#fff', color: '#fff' },
-          }}
-        >
-          View Citizen Portal
-        </Button>
-        <Button
           onClick={handleLogout}
           color="error"
           variant="text"
