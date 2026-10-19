@@ -612,7 +612,7 @@ export const AboutPage: React.FC = () => {
                 mt: 0.5,
               }}
             >
-              Published maximum response and resolution targets under the Greenfield County Public Service Act.
+              Published maximum response and resolution targets under the Murang'a County Public Service Act.
             </Typography>
           </Box>
 

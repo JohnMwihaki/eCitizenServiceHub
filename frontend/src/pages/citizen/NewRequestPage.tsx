@@ -201,7 +201,7 @@ export const NewRequestPage: React.FC = () => {
               Request Submitted Successfully!
             </Typography>
             <Typography variant="body2" sx={{ color: '#64748B', mb: 3 }}>
-              Your request has been securely recorded by Greenfield County. Use this official reference number to track all progress:
+              Your request has been securely recorded by Murang'a County. Use this official reference number to track all progress:
             </Typography>
 
             <Box
@@ -567,7 +567,7 @@ export const NewRequestPage: React.FC = () => {
               </Card>
 
               <Alert severity="info" sx={{ borderRadius: 2 }}>
-                By submitting, your request will be delivered to the Greenfield County Administration. You will receive an official tracking reference immediately upon submission.
+                By submitting, your request will be delivered to the Murang'a County Administration. You will receive an official tracking reference immediately upon submission.
               </Alert>
             </Box>
           )}

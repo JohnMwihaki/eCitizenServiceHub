@@ -114,7 +114,15 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <AppBar position="sticky" elevation={1} sx={{ bgcolor: '#12304A', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+    <AppBar
+      position="sticky"
+      elevation={1}
+      sx={{
+        bgcolor: 'var(--color-deep-navy)',
+        borderRadius: 0,
+        borderBottom: '1px solid var(--color-soft-white-overlay)',
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ minHeight: { xs: 64, md: 72 } }}>
           {/* Mobile hamburger */}
@@ -162,9 +170,10 @@ export const Navbar: React.FC = () => {
                   fontSize: { xs: '1.05rem', md: '1.2rem' },
                   letterSpacing: '-0.02em',
                   lineHeight: 1.2,
+                  color: 'var(--color-light-mint)',
                 }}
               >
-                eCitizen<span style={{ color: '#0F8B8D' }}>Hub</span>
+                eCitizen<span style={{ color: 'var(--color-aqua-soft)' }}>Hub</span>
               </Typography>
               <Typography
                 variant="caption"
@@ -221,11 +230,12 @@ export const Navbar: React.FC = () => {
                 size="small"
                 startIcon={<AdminIcon />}
                 sx={{
-                  bgcolor: '#0F8B8D',
-                  color: '#fff',
+                  bgcolor: 'var(--color-teal-medium)',
+                  color: 'var(--color-white)',
                   fontWeight: 700,
+                  fontFamily: 'var(--primary-font)',
                   display: { xs: 'none', sm: 'inline-flex' },
-                  '&:hover': { bgcolor: '#0c7375' },
+                  '&:hover': { bgcolor: 'var(--color-teal-dark)' },
                 }}
               >
                 Admin Workspace
@@ -241,11 +251,12 @@ export const Navbar: React.FC = () => {
                 size="small"
                 startIcon={<AddCircleOutline />}
                 sx={{
-                  bgcolor: '#0F8B8D',
-                  color: '#fff',
+                  bgcolor: 'var(--color-teal-medium)',
+                  color: 'var(--color-white)',
                   fontWeight: 700,
+                  fontFamily: 'var(--primary-font)',
                   display: { xs: 'none', sm: 'inline-flex' },
-                  '&:hover': { bgcolor: '#0c7375' },
+                  '&:hover': { bgcolor: 'var(--color-teal-dark)' },
                 }}
               >
                 Report / Request
@@ -357,14 +368,26 @@ export const Navbar: React.FC = () => {
                     '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' },
                   }}
                 >
-                  <Avatar sx={{ width: 34, height: 34, bgcolor: isAdmin ? '#D97706' : '#0F8B8D', fontSize: '0.9rem', fontWeight: 700 }}>
+                  <Avatar
+                    sx={{
+                      width: 34,
+                      height: 34,
+                      bgcolor: isAdmin ? '#D97706' : 'var(--color-teal-medium)',
+                      fontSize: '0.9rem',
+                      fontWeight: 700,
+                      fontFamily: 'var(--primary-font)',
+                    }}
+                  >
                     {user?.fullName?.charAt(0) || 'U'}
                   </Avatar>
                   <Box sx={{ display: { xs: 'none', lg: 'block' }, textAlign: 'left' }}>
-                    <Typography variant="body2" sx={{ fontWeight: 600, color: '#fff', lineHeight: 1.2 }}>
+                    <Typography
+                      variant="body2"
+                      sx={{ fontWeight: 600, color: 'var(--color-white)', lineHeight: 1.2, fontFamily: 'var(--primary-font)' }}
+                    >
                       {user?.fullName}
                     </Typography>
-                    <Typography variant="caption" sx={{ color: '#94A3B8', fontSize: '0.7rem' }}>
+                    <Typography variant="caption" sx={{ color: 'var(--color-lavender-gray)', fontSize: '0.7rem' }}>
                       {user?.role}
                     </Typography>
                   </Box>
@@ -444,7 +467,13 @@ export const Navbar: React.FC = () => {
                   component={Link}
                   to="/login"
                   variant="text"
-                  sx={{ color: '#FFFFFF', fontWeight: 600, fontSize: '0.88rem', '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
+                  sx={{
+                    color: 'var(--color-white)',
+                    fontWeight: 600,
+                    fontSize: '0.88rem',
+                    fontFamily: 'var(--primary-font)',
+                    '&:hover': { bgcolor: 'var(--color-soft-white-overlay)' },
+                  }}
                 >
                   Log In
                 </Button>
@@ -454,9 +483,10 @@ export const Navbar: React.FC = () => {
                   variant="contained"
                   sx={{
                     bgcolor: 'var(--color-button)',
-                    color: '#fff',
+                    color: 'var(--color-white)',
                     fontWeight: 700,
                     fontSize: '0.88rem',
+                    fontFamily: 'var(--primary-font)',
                     borderRadius: 2,
                     '&:hover': { bgcolor: 'rgb(145, 12, 5)' },
                   }}
@@ -485,7 +515,10 @@ export const Navbar: React.FC = () => {
                 mr: 1.5,
               }}
             />
-            <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#12304A' }}>
+            <Typography
+              variant="subtitle1"
+              sx={{ fontWeight: 800, color: 'var(--color-deep-navy)', fontFamily: 'var(--primary-font)' }}
+            >
               eCitizenHub
             </Typography>
           </Box>
@@ -513,7 +546,13 @@ export const Navbar: React.FC = () => {
               variant="contained"
               startIcon={<AddCircleOutline />}
               onClick={() => setMobileOpen(false)}
-              sx={{ bgcolor: '#0F8B8D', color: '#fff', mb: 2 }}
+              sx={{
+                bgcolor: 'var(--color-teal-medium)',
+                color: 'var(--color-white)',
+                mb: 2,
+                fontFamily: 'var(--primary-font)',
+                '&:hover': { bgcolor: 'var(--color-teal-dark)' },
+              }}
             >
               Report / Request
             </Button>

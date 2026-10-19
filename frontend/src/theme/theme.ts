@@ -3,21 +3,21 @@ import { createTheme } from '@mui/material/styles';
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#122242',
+      main: 'rgba(18,34,66,1)', 
       light: '#1e3a6d',
-      dark: '#0a1426',
-      contrastText: '#FFFFFF',
+      dark: 'rgb(10, 10, 12)', 
+      contrastText: 'rgba(255,255,255,1)',
     },
     secondary: {
-      main: '#009688', 
-      light: '#4db6ac', 
-      dark: '#00695c', 
-      contrastText: '#FFFFFF',
+      main: 'rgba(0,150,136,1)', 
+      light: 'rgba(77,182,172,1)', 
+      dark: 'rgba(0,105,92,1)', 
+      contrastText: 'rgba(255,255,255,1)',
     },
     success: {
-      main: '#238636',
-      light: '#2ea043',
-      dark: '#1a6328',
+      main: 'rgba(0,150,136,1)',
+      light: 'rgba(77,182,172,1)',
+      dark: 'rgba(0,105,92,1)',
     },
     warning: {
       main: '#D97706',
@@ -25,74 +25,80 @@ export const theme = createTheme({
       dark: '#b45309',
     },
     error: {
-      main: '#C62828',
+      main: 'rgb(172, 15, 7)', 
       light: '#ef5350',
-      dark: '#b71c1c',
+      dark: 'rgb(145, 12, 5)',
     },
     background: {
       default: '#F8FAFC',
-      paper: '#FFFFFF',
+      paper: 'var(--color-white)',
     },
     text: {
-      primary: '#111827',
-      secondary: '#6B7280',
+      primary: 'rgba(51,51,51,1)',
+      secondary: 'rgba(120,130,140,1)', 
     },
   },
 
   typography: {
-    fontFamily: '"Poppins", "Open Sans", "Lato", sans-serif',
+    fontFamily: 'var(--primary-font)',
     h1: {
-      fontFamily: '"Poppins", sans-serif',
+      fontFamily: 'var(--primary-font)',
       fontWeight: 800,
       letterSpacing: '-0.02em',
+      color: 'var(--color-deep-navy)',
     },
     h2: {
-      fontFamily: '"Poppins", sans-serif',
+      fontFamily: 'var(--primary-font)',
       fontWeight: 700,
       letterSpacing: '-0.01em',
+      color: 'var(--color-deep-navy)',
     },
     h3: {
-      fontFamily: '"Poppins", sans-serif',
+      fontFamily: 'var(--primary-font)',
       fontWeight: 700,
       letterSpacing: '-0.01em',
+      color: 'var(--color-deep-navy)',
     },
     h4: {
-      fontFamily: '"Poppins", sans-serif',
+      fontFamily: 'var(--primary-font)',
       fontWeight: 600,
+      color: 'var(--color-deep-navy)',
     },
     h5: {
-      fontFamily: '"Poppins", sans-serif',
+      fontFamily: 'var(--primary-font)',
       fontWeight: 600,
+      color: 'var(--color-deep-navy)',
     },
     h6: {
-      fontFamily: '"Poppins", sans-serif',
+      fontFamily: 'var(--primary-font)',
       fontWeight: 600,
+      color: 'var(--color-deep-navy)',
     },
     subtitle1: {
-      fontFamily: '"Poppins", sans-serif',
+      fontFamily: 'var(--primary-font)',
       fontWeight: 600,
     },
     subtitle2: {
-      fontFamily: '"Poppins", sans-serif',
+      fontFamily: 'var(--primary-font)',
       fontWeight: 600,
     },
     body1: {
-      fontFamily: '"Open Sans", "Poppins", sans-serif',
+      fontFamily: 'var(--primary-font)',
       fontSize: '0.95rem',
       lineHeight: 1.6,
     },
     body2: {
-      fontFamily: '"Open Sans", "Poppins", sans-serif',
+      fontFamily: 'var(--primary-font)',
       fontSize: '0.875rem',
       lineHeight: 1.6,
     },
     button: {
-      fontFamily: '"Poppins", sans-serif',
+      fontFamily: 'var(--primary-font)',
       textTransform: 'none',
       fontWeight: 600,
     },
     caption: {
-      fontFamily: '"Open Sans", sans-serif',
+      fontFamily: 'var(--primary-font)',
     },
   },
 
@@ -129,7 +135,7 @@ export const theme = createTheme({
         body: {
           fontFamily: 'var(--primary-font)',
           backgroundColor: '#F8FAFC',
-          color: '#111827',
+          color: 'var(--color-dark-grey)',
           margin: 0,
           padding: 0,
         },
@@ -161,6 +167,23 @@ export const theme = createTheme({
         '.scroll-marquee:hover': {
           animationPlayState: 'paused',
         },
+        '.brand-accent-title': {
+          fontFamily: 'var(--primary-font)',
+          color: 'var(--color-deep-navy)',
+        },
+        '.brand-script': {
+          fontFamily: 'var(--script-font)',
+          color: 'var(--color-teal-medium)',
+        },
+      },
+    },
+
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          
+          borderRadius: 0,
+        },
       },
     },
 
@@ -176,6 +199,38 @@ export const theme = createTheme({
             boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
           },
         },
+        containedPrimary: {
+          backgroundColor: 'var(--color-deep-navy)',
+          color: 'var(--color-white)',
+          '&:hover': {
+            backgroundColor: 'var(--color-cool-navy)',
+          },
+        },
+        containedSecondary: {
+          backgroundColor: 'var(--color-teal-medium)',
+          color: 'var(--color-white)',
+          '&:hover': {
+            backgroundColor: 'var(--color-teal-dark)',
+          },
+        },
+        containedError: {
+          backgroundColor: 'var(--color-button)',
+          color: 'var(--color-white)',
+          '&:hover': {
+            backgroundColor: 'rgb(145, 12, 5)',
+          },
+        },
+        outlinedPrimary: {
+          borderColor: 'var(--color-deep-navy)',
+          color: 'var(--color-deep-navy)',
+        },
+        outlinedSecondary: {
+          borderColor: 'var(--color-teal-medium)',
+          color: 'var(--color-teal-dark)',
+        },
+        textSecondary: {
+          color: 'var(--color-teal-dark)',
+        },
       },
     },
 
@@ -184,7 +239,7 @@ export const theme = createTheme({
         root: {
           borderRadius: 12,
           boxShadow: '0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03)',
-          border: '1px solid #E2E8F0',
+          border: '1px solid var(--color-border-light)',
         },
       },
     },
@@ -194,6 +249,17 @@ export const theme = createTheme({
         root: {
           borderRadius: 12,
         },
+      },
+    },
+
+    MuiTypography: {
+      styleOverrides: {
+        h1: { fontFamily: 'var(--primary-font)', color: 'var(--color-deep-navy)' },
+        h2: { fontFamily: 'var(--primary-font)', color: 'var(--color-deep-navy)' },
+        h3: { fontFamily: 'var(--primary-font)', color: 'var(--color-deep-navy)' },
+        h4: { fontFamily: 'var(--primary-font)', color: 'var(--color-deep-navy)' },
+        h5: { fontFamily: 'var(--primary-font)', color: 'var(--color-deep-navy)' },
+        h6: { fontFamily: 'var(--primary-font)', color: 'var(--color-deep-navy)' },
       },
     },
   },

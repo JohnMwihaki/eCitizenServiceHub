@@ -86,7 +86,7 @@ export const AdminMapPage: React.FC = () => {
             Geographic Request Map
           </Typography>
           <Typography variant="body2" sx={{ color: '#64748B' }}>
-            Spatial distribution and hotspot overview of reported community issues across Greenfield County.
+            Spatial distribution and hotspot overview of reported community issues across Murang'a County.
           </Typography>
         </Box>
         <Button

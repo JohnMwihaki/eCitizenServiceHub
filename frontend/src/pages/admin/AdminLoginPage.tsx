@@ -129,7 +129,7 @@ export const AdminLoginPage: React.FC = () => {
             }}
           />
 
-          {/* White Circular Seal Emblem with Official Logo */}
+          
           <Box
             sx={{
               width: 96,
@@ -209,9 +209,9 @@ export const AdminLoginPage: React.FC = () => {
             <Typography
               variant="h4"
               sx={{
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: 'var(--primary-font)',
                 fontWeight: 800,
-                color: '#12304A',
+                color: 'var(--color-deep-navy)',
                 fontSize: { xs: '1.6rem', md: '1.85rem' },
                 lineHeight: 1.2,
                 mb: 0.8,
@@ -222,8 +222,8 @@ export const AdminLoginPage: React.FC = () => {
             <Typography
               variant="body2"
               sx={{
-                fontFamily: "'Open Sans', sans-serif",
-                color: '#64748B',
+                fontFamily: 'var(--primary-font)',
+                color: 'var(--color-soft-cool-gray)',
                 fontSize: '0.92rem',
               }}
             >

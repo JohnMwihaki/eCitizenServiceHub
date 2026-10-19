@@ -98,7 +98,7 @@ export const TrackRequestPage: React.FC = () => {
             Track Your Service Request
           </Typography>
           <Typography variant="body1" sx={{ color: '#64748B', maxWidth: 520, mx: 'auto', mb: 4 }}>
-            Enter your official Greenfield County reference number (e.g. <strong>CSR-2026-0001</strong>) to view live status updates and resolution progress.
+            Enter your official Murang'a County reference number (e.g. <strong>CSR-2026-0001</strong>) to view live status updates and resolution progress.
           </Typography>
 
           {!isAuthenticated && (

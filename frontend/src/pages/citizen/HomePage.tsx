@@ -249,17 +249,18 @@ export const HomePage: React.FC = () => {
             {/* Left Column: Overlay Text & CTAs */}
             <Grid item xs={12} md={7.5}>
               <Chip
-                icon={<VerifiedUser sx={{ color: '#4db6ac !important', fontSize: 16 }} />}
+                icon={<VerifiedUser sx={{ color: 'var(--color-aqua-soft) !important', fontSize: 16 }} />}
                 label={heroSlides[currentSlide].tag}
                 size="small"
                 sx={{
-                  bgcolor: 'rgba(77, 182, 172, 0.18)',
-                  color: '#4db6ac',
+                  bgcolor: 'var(--color-aqua-translucent)',
+                  color: 'var(--color-aqua-soft)',
                   fontWeight: 800,
                   fontSize: '0.75rem',
                   letterSpacing: '0.05em',
                   mb: 3,
-                  border: '1px solid rgba(77, 182, 172, 0.35)',
+                  border: '1px solid var(--color-aqua-soft)',
+                  fontFamily: 'var(--primary-font)',
                 }}
               />
 
@@ -268,7 +269,7 @@ export const HomePage: React.FC = () => {
                 sx={{
                   fontSize: { xs: '2.4rem', sm: '3.4rem', md: '3.9rem' },
                   fontWeight: 800,
-                  color: '#FFFFFF',
+                  color: 'var(--color-white)',
                   lineHeight: 1.15,
                   mb: 2.5,
                   letterSpacing: '-0.02em',
@@ -276,7 +277,7 @@ export const HomePage: React.FC = () => {
                 }}
               >
                 Your County. <br />
-                <span style={{ color: '#4db6ac' }}>Your Services.</span> Your Voice.
+                <span style={{ color: 'var(--color-aqua-soft)' }}>Your Services.</span> Your Voice.
               </Typography>
 
               <Typography
@@ -288,7 +289,7 @@ export const HomePage: React.FC = () => {
                   lineHeight: 1.65,
                   maxWidth: 620,
                   mb: 4,
-                  fontFamily:  "'Dancing Script', cursive",
+                  fontFamily: 'var(--script-font)',
                   textShadow: '0 2px 4px rgba(0,0,0,0.5)',
                 }}
               >
@@ -304,15 +305,16 @@ export const HomePage: React.FC = () => {
                   size="large"
                   startIcon={<AddCircleOutline />}
                   sx={{
-                    bgcolor: '#009688',
-                    color: '#fff',
+                    bgcolor: 'var(--color-teal-medium)',
+                    color: 'var(--color-white)',
                     py: 1.6,
                     px: 3.5,
                     fontSize: '1rem',
                     fontWeight: 700,
+                    fontFamily: 'var(--primary-font)',
                     borderRadius: 2.5,
                     boxShadow: '0 4px 20px rgba(0, 150, 136, 0.45)',
-                    '&:hover': { bgcolor: '#00695c' },
+                    '&:hover': { bgcolor: 'var(--color-teal-dark)' },
                   }}
                 >
                   Report an Issue
@@ -1285,7 +1287,7 @@ export const HomePage: React.FC = () => {
                   mt: 0.5,
                 }}
               >
-                Verified infrastructure requests plotted across Greenfield County. Private citizen information is strictly hidden.
+                Verified infrastructure requests plotted across Murang'a County. Private citizen information is strictly hidden.
               </Typography>
             </Box>
             <PublicIssuesMap issues={publicIssues} />
@@ -1488,7 +1490,7 @@ export const HomePage: React.FC = () => {
                   maxWidth: 580,
                 }}
               >
-                Join a community of proactive residents and neighbors. Stay up to date with verified service resolutions and help improve neighborhood infrastructure across Greenfield County.
+                Join a community of proactive residents and neighbors. Stay up to date with verified service resolutions and help improve neighborhood infrastructure across Murang'a County.
               </Typography>
             </Grid>
 

@@ -232,9 +232,9 @@ export const RegisterPage: React.FC = () => {
             <Typography
               variant="h4"
               sx={{
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: 'var(--primary-font)',
                 fontWeight: 800,
-                color: '#12304A',
+                color: 'var(--color-deep-navy)',
                 fontSize: { xs: '1.55rem', md: '1.75rem' },
                 lineHeight: 1.2,
                 mb: 0.6,
@@ -245,8 +245,8 @@ export const RegisterPage: React.FC = () => {
             <Typography
               variant="body2"
               sx={{
-                fontFamily: "'Open Sans', sans-serif",
-                color: '#64748B',
+                fontFamily: 'var(--primary-font)',
+                color: 'var(--color-soft-cool-gray)',
                 fontSize: '0.88rem',
               }}
             >
@@ -495,7 +495,7 @@ export const RegisterPage: React.FC = () => {
             </Typography>
 
             <Typography variant="caption" sx={{ display: 'block', color: '#94A3B8', mt: 1.5 }}>
-              County Administrator? Administrators do not register publicly.{' '}
+              County Administrator? .{' '}
               <MuiLink
                 component={Link}
                 to="/admin/login"
