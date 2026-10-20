@@ -113,7 +113,7 @@ export const Footer: React.FC = () => {
 
         <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
           <Typography variant="caption" sx={{ color: '#64748B' }}>
-            &copy; {new Date().getFullYear()} Murang'a County Government. All rights reserved. Built for citizen empowerment.
+            &copy; {new Date().getFullYear()} Built with ❤️ by <a href="https://github.com/JohnMwihaki" target="_blank" rel="noopener noreferrer" style={{ color: '#0F8B8D', textDecoration: 'underline' }}>John Mwihaki</a>
           </Typography>
           <Stack direction="row" spacing={3}>
             <Typography variant="caption" sx={{ color: '#64748B', display: 'flex', alignItems: 'center', gap: 0.5 }}>
